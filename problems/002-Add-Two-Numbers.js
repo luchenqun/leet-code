@@ -33,7 +33,7 @@ var addTwoNumbers = function (l1, l2) {
     var carry = 0;
     var pre = null;
     var index = 0;
-    while(l1 || l2){
+    while(l1 || l2 || carry > 0){
         let a = (l1 && l1.val) || 0;
         let b = (l2 && l2.val) || 0;
         let sum = a + b + carry;
@@ -49,11 +49,6 @@ var addTwoNumbers = function (l1, l2) {
         pre = node;
         l1 = l1 && l1.next;
         l2 = l2 && l2.next;
-    }
-
-    if (carry > 0) {
-        let node = new ListNode(carry);
-        pre.next = node;
     }
 
     return firstNode;
