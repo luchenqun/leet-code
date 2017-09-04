@@ -1,0 +1,26 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "i love this world",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luchenqun/LeetCode.git"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "luchenqun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luchenqun/LeetCode/issues"
+  },
+  "homepage": "https://github.com/luchenqun/LeetCode#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0"
+  }
+}
