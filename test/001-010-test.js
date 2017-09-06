@@ -24,9 +24,6 @@ describe("001 Two Sum Test Cases", function () {
 describe("002 Add Two Numbers Test Cases", function () {
     var addTwoNumbers = require('../problems/002-Add-Two-Numbers.js');
 
-    
-    
-
     var tests = [
         { num1: [1], num2: [9, 9], expected: [0, 0, 1] },
         { num1: [1, 6, 3], num2: [4, 2, 3], expected: [5, 8, 6] },
@@ -73,6 +70,21 @@ describe("002 Add Two Numbers Test Cases", function () {
             } while (nodeRet)
 
             expect(retArray).to.deep.equal(test.expected);
+        });
+    });
+})
+
+describe("003 003-Longest-Substring-Without-Repeating-Characters Test Cases", function () {
+    var lengthOfLongestSubstring = require('../problems/003-Longest-Substring-Without-Repeating-Characters.js');
+    var tests = [
+        { s: 'abcabcbb', expected: 3 },
+        { s: 'bbbbb', expected: 1 },
+        { s: 'pwwkew', expected: 3 },
+    ];
+
+    tests.forEach(function (test, index) {
+        it('Longest Substring Without Repeating Characters Case' + (index + 1), function () {
+            expect(lengthOfLongestSubstring(test.s)).to.equal(test.expected);
         });
     });
 })
