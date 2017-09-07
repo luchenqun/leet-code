@@ -15,7 +15,7 @@ describe("001 Two Sum Test Cases", function () {
     ];
 
     tests.forEach(function (test, index) {
-        it('Two Sum Case' + (index + 1), function () {
+        it('Two Sum Case ' + (index + 1), function () {
             expect(twoSum(test.nums, test.target)).to.deep.equal(test.expected);
         });
     });
@@ -58,7 +58,7 @@ describe("002 Add Two Numbers Test Cases", function () {
     }
 
     tests.forEach(function (test, index) {
-        it('Add Two Numbers Case' + (index + 1), function () {
+        it('Add Two Numbers Case ' + (index + 1), function () {
             var node1 = numsToNode(test.num1);
             var node2 = numsToNode(test.num2);
 
@@ -74,7 +74,7 @@ describe("002 Add Two Numbers Test Cases", function () {
     });
 })
 
-describe("003 003-Longest-Substring-Without-Repeating-Characters Test Cases", function () {
+describe("003 Longest-Substring-Without-Repeating-Characters Test Cases", function () {
     var lengthOfLongestSubstring = require('../problems/003-Longest-Substring-Without-Repeating-Characters.js');
     var tests = [
         { s: 'abcabcbb', expected: 3 },
@@ -83,8 +83,26 @@ describe("003 003-Longest-Substring-Without-Repeating-Characters Test Cases", fu
     ];
 
     tests.forEach(function (test, index) {
-        it('Longest Substring Without Repeating Characters Case' + (index + 1), function () {
+        it('Longest Substring Without Repeating Characters Case ' + (index + 1), function () {
             expect(lengthOfLongestSubstring(test.s)).to.equal(test.expected);
+        });
+    });
+})
+
+describe("005 Longest-Palindromic-Substring Test Cases", function () {
+    var longestPalindrome = require('../problems/005-Longest-Palindromic-Substring.js');
+    var longStr = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    var tests = [
+        // { s: 'babad', expected: 'bab' },
+        { s: longStr + longStr, expected: longStr + longStr },
+        // { s: 'cbbd', expected: 'bb' },
+        // { s: 'ccbbcaad', expected: 'cbbc' },
+        // { s: '', expected: '' },
+    ];
+
+    tests.forEach(function (test, index) {
+        it('Longest Palindromic Substring Case ' + (index + 1), function () {
+            expect(longestPalindrome(test.s)).to.equal(test.expected);
         });
     });
 })
@@ -102,7 +120,7 @@ describe("007 Reverse Integer Test Cases", function () {
     ];
 
     tests.forEach(function (test, index) {
-        it('Reverse Integer Case' + (index + 1), function () {
+        it('Reverse Integer Case ' + (index + 1), function () {
             expect(reverse(test.num)).to.equal(test.expected);
         });
     });
