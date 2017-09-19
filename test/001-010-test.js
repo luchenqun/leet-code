@@ -125,3 +125,22 @@ describe("007 Reverse Integer Test Cases", function () {
         });
     });
 })
+
+
+describe("009 Palindrome Number Test Cases", function () {
+    var isPalindrome = require('../problems/009-Palindrome-Number.js');
+    var tests = [
+        { num: 123, expected: false },
+        { num: -1, expected: false },
+        { num: 0, expected: true },
+        { num: -0, expected: false },
+        { num: 123321, expected: true },
+        { num: 12321, expected: true },
+    ];
+
+    tests.forEach(function (test, index) {
+        it('Palindrome Number Case ' + (index + 1), function () {
+            expect(isPalindrome(test.num)).to.equal(test.expected);
+        });
+    });
+})
