@@ -46,11 +46,7 @@ class Solution
   public:
     bool isSymmetric(TreeNode *root)
     {
-        if (root == NULL)
-            return true;
-        if (root->left == NULL || root->right == NULL)
-            return root->left == root->right;
-        return isSymmetric(root->left, root->right);
+        return root == NULL || isSymmetric(root->left, root->right);
     }
 
     bool isSymmetric(TreeNode *tn1, TreeNode *tn2)
