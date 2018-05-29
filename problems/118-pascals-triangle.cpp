@@ -25,13 +25,31 @@
  */
 
 #include <iostream>
-#include <string>
+#include <vector>
 using namespace std;
 
-class Solution {
-public:
-    vector<vector<int>> generate(int numRows) {
-        
+class Solution
+{
+  public:
+    vector<vector<int>> generate(int numRows)
+    {
+        if (numRows == 0)
+            return {};
+        vector<vector<int>> ans = {vector<int>{1}};
+        for (int row = 2; row <= numRows; row++)
+        {
+            int preSize = ans[row - 2].size();
+            vector<int> curRow = {1};
+
+            for (int i = 1; i < preSize; i++)
+            {
+                curRow.push_back(ans[row - 2].at(i - 1) + ans[row - 2].at(i));
+            }
+            curRow.push_back(1);
+            ans.push_back(curRow);
+        }
+
+        return ans;
     }
 };
 
@@ -41,4 +59,3 @@ int main()
 
     return 0;
 }
-        
