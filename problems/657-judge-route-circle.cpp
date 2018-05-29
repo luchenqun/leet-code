@@ -23,13 +23,45 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 using namespace std;
 
-class Solution {
-public:
-    bool judgeCircle(string moves) {
-        
+class Solution
+{
+  public:
+    struct Point
+    {
+        int x;
+        int y;
+    };
+
+    Solution()
+    {
+        dir["UX"] = 0;
+        dir["UY"] = 1;
+        dir["DX"] = 0;
+        dir["DY"] = -1;
+        dir["LX"] = -1;
+        dir["LY"] = 0;
+        dir["RX"] = 1;
+        dir["RY"] = 0;
     }
+
+    bool judgeCircle(string moves)
+    {
+        struct Point oriPos = {0, 0};
+
+        for (char move : moves)
+        {
+            oriPos.x += dir[string(1, move) + "X"];
+            oriPos.y += dir[string(1, move) + "Y"];
+        }
+
+        return (oriPos.x == 0 && oriPos.y == 0);
+    }
+
+  private:
+    map<string, int> dir;
 };
 
 int main()
@@ -38,4 +70,3 @@ int main()
 
     return 0;
 }
-        

@@ -21,10 +21,44 @@
 #include <string>
 using namespace std;
 
-class Solution {
-public:
-    string reverseWords(string s) {
-        
+class Solution
+{
+  public:
+    string reverseWords(string s)
+    {
+        string ans;
+        string word;
+        for (char c : s)
+        {
+            if (c == ' ')
+            {
+                ans += word;
+                ans += c;
+                word = "";
+            }
+            else
+            {
+                word = c + word;
+            }
+        }
+        ans += word;
+
+        return ans;
+    }
+    
+    string reverseWords1(string s)
+    {
+        size_t front = 0;
+        for (int i = 0; i <= s.length(); ++i)
+        {
+            if (i == s.length() || s[i] == ' ')
+            {
+                reverse(&s[front], &s[i]);
+                front = i + 1;
+            }
+        }
+
+        return s;
     }
 };
 
@@ -34,4 +68,3 @@ int main()
 
     return 0;
 }
-        
