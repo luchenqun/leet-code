@@ -27,19 +27,50 @@
 
 #include <iostream>
 #include <string>
+#include <cctype>
 using namespace std;
 
-class Solution {
-public:
-    bool detectCapitalUse(string word) {
-        
+class Solution
+{
+  public:
+    bool allUpper(string word)
+    {
+        for (char &c : word)
+        {
+            if (!isupper(c))
+                return false;
+        }
+        return true;
+    }
+
+    bool allLower(string word)
+    {
+        for (char &c : word)
+        {
+            if (!islower(c))
+                return false;
+        }
+        return true;
+    }
+
+    bool firstUpper(string &word)
+    {
+        return (word.size() > 1) && isupper(word.front()) && allLower(word.substr(1));
+    }
+
+    bool detectCapitalUse(string word)
+    {
+        if(word.empty()) return false;
+        return allUpper(word) || allLower(word) || firstUpper(word);
     }
 };
 
 int main()
 {
     Solution s;
-
+    cout << s.detectCapitalUse("") << endl;
+    cout << s.detectCapitalUse("USA") << endl;
+    cout << s.detectCapitalUse("leetcode") << endl;
+    cout << s.detectCapitalUse("Google") << endl;
     return 0;
 }
-        
