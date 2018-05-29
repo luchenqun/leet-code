@@ -27,22 +27,48 @@
  */
 
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
 /**
  * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
  */
-class Solution {
-public:
-    vector<vector<int>> levelOrderBottom(TreeNode* root) {
-        
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class Solution
+{
+  public:
+    vector<vector<int>> levelOrderBottom(TreeNode *root)
+    {
+        vector<vector<int>> ans;
+        dfs(root, ans, 0);
+        reverse(ans.begin(), ans.end());
+
+        return ans;
+    }
+
+    void dfs(TreeNode *tn, vector<vector<int>> &vc, int depth)
+    {
+        if (tn == nullptr)
+            return;
+
+        if (vc.size() <= depth)
+        {
+            vc.push_back(vector<int>{});
+        }
+
+        vc.at(depth).push_back(tn->val);
+        dfs(tn->left, vc, depth + 1);
+        dfs(tn->right, vc, depth + 1);
     }
 };
 
@@ -52,4 +78,3 @@ int main()
 
     return 0;
 }
-        

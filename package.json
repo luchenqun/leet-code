@@ -4,7 +4,8 @@
   "description": "i love this world",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "l": "leetcode list -q=e"
   },
   "repository": {
     "type": "git",
