@@ -28,6 +28,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <algorithm>
 using namespace std;
 
 class Solution
@@ -60,8 +61,15 @@ class Solution
 
     bool detectCapitalUse(string word)
     {
-        if(word.empty()) return false;
+        if (word.empty())
+            return false;
         return allUpper(word) || allLower(word) || firstUpper(word);
+    }
+
+    bool detectCapitalUse1(string word)
+    {
+        int capCnt = count_if(word.begin(), word.end(), [](char c) { return c <= 'Z'; });
+        return !capCnt || capCnt == word.size() || (capCnt == 1 && word[0] <= 'Z');
     }
 };
 
