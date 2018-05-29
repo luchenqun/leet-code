@@ -20,14 +20,35 @@
  */
 
 #include <iostream>
-#include <string>
+#include <vector>
 using namespace std;
 
-class Solution {
-public:
-    vector<int> getRow(int rowIndex) {
-        
+class Solution
+{
+  public:
+    Solution()
+    {
+        ans.push_back(vector<int>{1});
+        for (int row = 2; row <= 34; row++)
+        {
+            int preSize = ans[row - 2].size();
+            vector<int> curRow = {1};
+
+            for (int i = 1; i < preSize; i++)
+            {
+                curRow.push_back(ans[row - 2].at(i - 1) + ans[row - 2].at(i));
+            }
+            curRow.push_back(1);
+            ans.push_back(curRow);
+        }
     }
+    vector<int> getRow(int rowIndex)
+    {
+        return ans.at(rowIndex);
+    }
+
+  private:
+    vector<vector<int>> ans;
 };
 
 int main()
@@ -36,4 +57,3 @@ int main()
 
     return 0;
 }
-        
