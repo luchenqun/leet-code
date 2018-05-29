@@ -25,22 +25,35 @@
  */
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 /**
  * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
  */
-class Solution {
-public:
-    bool hasPathSum(TreeNode* root, int sum) {
-        
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+// × Wrong Answer
+// × 104/114 cases passed (N/A)
+// × testcase: '[1,2,null,3,null,4,null,5]\n6'
+// × answer: true
+// × expected_answer: false
+
+class Solution
+{
+  public:
+    bool hasPathSum(TreeNode *root, int sum)
+    {
+        if (root == NULL)
+            return false;
+        if (root->left == NULL && root->right == NULL && root->val == sum)
+            return true;
+        return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val);
     }
 };
 
@@ -50,4 +63,3 @@ int main()
 
     return 0;
 }
-        

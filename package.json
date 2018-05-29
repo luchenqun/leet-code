@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "l": "leetcode list -q=e",
-    "p": "git add . && git commit -m ${m} && git push"
+    "l": "leetcode list -q=e"
   },
   "repository": {
     "type": "git",
