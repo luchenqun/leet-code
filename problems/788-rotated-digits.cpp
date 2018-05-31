@@ -81,6 +81,31 @@ class Solution
         return true;
     }
 
+    bool isValid(int N)
+    {
+        /* Valid if N contains ATLEAST ONE 2, 5, 6, 9 AND NO 3, 4 or 7s */
+        bool validFound = false;
+        while (N > 0)
+        {
+            if (N % 10 == 2)
+                validFound = true;
+            if (N % 10 == 5)
+                validFound = true;
+            if (N % 10 == 6)
+                validFound = true;
+            if (N % 10 == 9)
+                validFound = true;
+            if (N % 10 == 3)
+                return false;
+            if (N % 10 == 4)
+                return false;
+            if (N % 10 == 7)
+                return false;
+            N = N / 10;
+        }
+        return validFound;
+    }
+
     int rotatedDigits(int N)
     {
         return ans[N];
