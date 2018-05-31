@@ -25,20 +25,76 @@
  */
 
 #include <iostream>
-#include <string>
+#include <array>
+#include <algorithm>
 using namespace std;
 
-class Solution {
-public:
-    int rotatedDigits(int N) {
-        
+class Solution
+{
+  public:
+    Solution()
+    {
+        ans.fill(0);
+        ans[0] = 0;
+        size_t size = ans.size();
+        for (size_t i = 1; i < size; i++)
+        {
+            ans[i] = ans[i - 1] + (isRotate(i) ? 1 : 0);
+        }
     }
+
+    bool isRotate(int num)
+    {
+        return canRotate(num) ? num != numRotate(num) : false;
+    }
+
+    int numRotate(int num)
+    {
+        int mapping[10];
+        mapping[0] = 0;
+        mapping[1] = 1;
+        mapping[2] = 5;
+        mapping[5] = 2;
+        mapping[6] = 9;
+        mapping[8] = 8;
+        mapping[9] = 6;
+        int ret = 0;
+        int carry = 1;
+        while (num > 0)
+        {
+            ret = ret + mapping[num % 10] * carry;
+            carry *= 10;
+            num /= 10;
+        }
+        return ret;
+    }
+
+    bool canRotate(int num)
+    {
+        while (num > 0)
+        {
+            int cur = num % 10;
+            if (cur == 3 || cur == 4 || cur == 7)
+                return false;
+            num /= 10;
+        }
+        return true;
+    }
+
+    int rotatedDigits(int N)
+    {
+        return ans[N];
+    }
+
+  private:
+    array<int, 10001> ans;
 };
 
 int main()
 {
     Solution s;
 
+    cout << s.rotatedDigits(10) << endl;
+
     return 0;
 }
-        
