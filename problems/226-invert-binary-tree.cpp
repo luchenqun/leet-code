@@ -30,22 +30,44 @@
  */
 
 #include <iostream>
-#include <string>
+#include <algorithm>
 using namespace std;
 
 /**
  * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
  */
-class Solution {
-public:
-    TreeNode* invertTree(TreeNode* root) {
-        
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
+class Solution
+{
+  public:
+    TreeNode *invertTree(TreeNode *root)
+    {
+        if (root)
+            invertTreeLR(root->left, root->right);
+        return root;
+    }
+
+    void invertTreeLR(TreeNode *&l, TreeNode *&r)
+    {
+        if (!l && !r)
+            return;
+        swap(l, r);
+        if (l)
+        {
+            invertTreeLR(l->left, l->right);
+        }
+        if (r)
+        {
+            invertTreeLR(r->left, r->right);
+        }
     }
 };
 
@@ -55,4 +77,3 @@ int main()
 
     return 0;
 }
-        
