@@ -31,35 +31,33 @@
 package main
 
 import (
-    "fmt"
-    "strings"
+	"fmt"
+	"strings"
 )
 
 func isPalindrome(s string) bool {
 	s = strings.ToLower(s)
+
 	ss := ""
-    for _, char := range s {
-        if char >= 'a' && char <= 'z'{
-            ss += string(char)
-        }
-    }
-    //fmt.Println(ss)
-    sLen := len(ss)
+	for _, char := range s {
+		if (char >= 'a' && char <= 'z') || (char >= '0' && char <= '9') {
+			ss += string(char)
+		}
+	}
+	//fmt.Println(ss)
+	sLen := len(ss)
 	for i := 0; i < sLen/2; i++ {
 		if ss[i] != ss[sLen-i-1] {
 			return false
 		}
 	}
-	if sLen == 1 {
-	    return false
-    }
 
 	return true
 }
 
 func main() {
-    fmt.Println(isPalindrome("A man, a plan, a canal: Panama"))
-    fmt.Println(isPalindrome("race a car"))
-    fmt.Println(isPalindrome(""))
-    fmt.Println(isPalindrome("0P"))
+	fmt.Println(isPalindrome("A man, a plan, a canal: Panama"))
+	fmt.Println(isPalindrome("race a car"))
+	fmt.Println(isPalindrome(""))
+	fmt.Println(isPalindrome("0P"))
 }
